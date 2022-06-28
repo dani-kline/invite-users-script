@@ -35,8 +35,11 @@ with open('csvfilename.csv', 'r') as read_obj:
             }
         # Replace orgId in the line below with the orgId found in Snyk in the Org settings for the org you're inviting users to
         invite_users_endpoint = "https://snyk.io/api/v1/org/orgId/invite"
+        # Posts to the Invite API endpoint for the user in this iteration
         invite_users_post=requests.post(invite_users_endpoint,headers={"Authorization": snyk_token},data=invite_body_params)
+        # save the response to a variable
         response_from_invite = invite_users_post.json()
+        # print the response -- I figure this can help with debugging
         print(response_from_invite)
         
         
